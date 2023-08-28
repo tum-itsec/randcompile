@@ -9,7 +9,8 @@ RUN mkdir /home/randcompile /home/randcompile/kernels /home/randcompile/source
 # Getting it from Git should work for quite a while. If this faults at some day, 5.15 is an LTS release. It should be possible to obtain it from an alternative source... 
 RUN git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git --depth 1 --branch v5.15.63 /home/randcompile/source
 
-ADD randfun.patch build-kernel.sh config-base config-buildroot buildroot-overlay /home/randcompile/
+COPY randfun.patch build-kernel.sh config-base config-buildroot /home/randcompile/
+COPY buildroot-overlay/ home/randcompile/buildroot-overlay/
 RUN cp -r /home/randcompile/source /home/randcompile/source-unpatched
 WORKDIR /home/randcompile/source
 

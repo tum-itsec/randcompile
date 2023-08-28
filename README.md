@@ -27,7 +27,7 @@ $> qemu-system-x86_64 -enable-kvm -nographic -cpu host -m 1g -kernel kernels/bas
 
 Please replace *<some-initrd>* with some initial ramdisk that can serve as a rootfs for testing. 
 For a quick test of RandCompile, you can reuse a ramdisk of you current Linux install from /boot. 
-If you want to fully reproduce our results, you can recreate our buildroot setup with the following command. *Note: This will take some time*
+If you want to fully reproduce our results, you can recreate our buildroot setup with the following command. *Note: This will take some considerable amount of time as buildroot is bootstraping the compiler and compiles all userspace components.*
 
 ```
 $> docker run -v $(pwd)/kernels:/home/randcompile/kernels -it randcompile build-initrd
