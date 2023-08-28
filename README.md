@@ -33,7 +33,7 @@ If you want to fully reproduce our results, you can recreate our buildroot setup
 $> docker run -v $(pwd)/kernels:/home/randcompile/kernels -it randcompile build-initrd
 ```
 
-The final ramdisk is placed in ```kernels/rootfs.cpio.gz```.
+The final ramdisk is placed in ```kernels/rootfs.cpio.gz```. The password for the user ```root``` is set to *asd*.
 
 ## Manual Build Process
 
