@@ -2,14 +2,8 @@
 set -eux
 
 CURDIR=$PWD
-KERNDIR=source/
-cd $KERNDIR
 
 TARGETS="config_base config_base_ftrace config_bogusmem config_bogusargs config_nobogus config_forensic_hardening"
-#TARGETS="config_base_ftrace"
-
-export CXX=g++-11-ff
-export CC=gcc-11-ff
 
 function config_base() {
 	cp "../config-base" .config
@@ -95,17 +89,32 @@ function build_kernel() {
 	FILENAME_CLN="${FILENAME//config_/}"
 	echo $FILENAME
 	echo $FILENAME_CLN
+
+	if [[ "$FILENAME_CLN" == "base" || "$FILENAME_CLN" == "base_ftrace" ]]; then
+		pushd source-unpatched
+	else
+		pushd "source"
+	fi
 	# Configure kernel
 	$1
 	#cp $f .config
-	make CXX=g++-11-ff CC=gcc-11-ff oldconfig
+	make oldconfig
 	# ./rebuild.sh &> buildlog
 	make clean
-	make CXX=g++-11-ff CC=gcc-11-ff CONFIG_SECTION_MISMATCH_WARN_ONLY=y -j32 &> buildlog
+	make CONFIG_SECTION_MISMATCH_WARN_ONLY=y -j$(nproc) &> $CURDIR/kernels/$FILENAME_CLN.buildlog
 	cp vmlinux $CURDIR/kernels/$FILENAME_CLN.vmlinux
 	cp arch/x86/boot/bzImage $CURDIR/kernels/$FILENAME_CLN.bzImage
-	cp buildlog $CURDIR/kernels/$FILENAME_CLN.buildlog
 	cp System.map $CURDIR/kernels/$FILENAME_CLN.systemmap
+	popd
+}
+
+function build_rootfs() {
+	curl https://buildroot.org/downloads/buildroot-2023.02.3.tar.gz -o - | tar -xz
+	cd buildroot-2023*
+	cp ../config-buildroot .config
+	make olddefconfig
+	make
+	cp output/images/rootfs.cpio.gz ../kernels/
 }
 
 if [ -z "${1+x}" ] ; then
@@ -113,5 +122,9 @@ if [ -z "${1+x}" ] ; then
 		build_kernel $f
 	done
 else
-	build_kernel $1
+	if [[ "$1" == "build-initrd" ]]; then
+		build_rootfs
+	else
+		build_kernel $1
+	fi
 fi

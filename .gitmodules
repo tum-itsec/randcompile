@@ -1,0 +1,3 @@
+[submodule "hyperlink-gdb/gdbpt"]
+	path = hyperlink-gdb/gdbpt
+	url = https://github.com/martinradev/gdb-pt-dump.git
