@@ -67,6 +67,11 @@ config_nobogus}
 
 ## Kernels generated
 
+After a sucessfull build you should find the following files in the ```kernels/``` folder:
+
+- ```base.{bzImage|vmlinux}```: An unpatched 5.15 kernel
+- ```base_ftrace.{bzImage|vmlinux```: An unpatched 5.15 kernel with Ftrace enabled
+- ```forensic_hardening.{bzImage|vmlinux}```: A kernel without randomized arguments, no externalized printk format strings, but pointer encryption for the ```task_struct.tasks.{next|prev}``` pointers and string encryption of ```tasks_struct.comm```. This should defeat/confuse tools like Fossil (only the task listing!) and HyperLink/TrustZone Rootkit.
 
 ## Analyzing Memory with our HyperLink GDB Plugin
 
@@ -77,7 +82,7 @@ $> qemu-system-x86_64 -enable-kvm -nographic -s -cpu host -m 1g -kernel kernels/
 
 Start some programs or do whatever you want inside the VM. 
 
-Afterward, debug the running VM using GDB. You can omit the vmlinux file in case you are doing a real analysis of an unknown system. However, if you want to verify that RandCompile functions correctly, you might want add the debugging symbols to the GDB session and add the ```nokaslr``` switch to the kernel command line (like shown above).
+Afterward, debug the running VM using GDB. You can omit the vmlinux file in case you are doing a real analysis of an unknown system. However, if you want to verify that RandCompile functions correctly, you might want add the debugging symbols to the GDB session and add the ```nokaslr``` switch to the kernel command line (like shown above). We used GDB version 13.1 for our experiments. However, we haven't experienced incompatibilites with other versions of GDB so far.
 
 ```
 $> gdb -ex 'target remote :1234' kernels/base.vmlinux
