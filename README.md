@@ -62,3 +62,33 @@ config_bogusmem|
 config_bogusargs|
 config_nobogus}
 ```
+
+## Analyzing Memory with our HyperLink GDB Plugin
+
+Start QEMU (allowing connections from GDB on port 1234):
+```
+$> qemu-system-x86_64 -enable-kvm -nographic -s -cpu host -m 1g -kernel kernels/base.bzImage -initrd kernels/rootfs.cpio.gz -append 'console=ttyS0 nokaslr'
+```
+
+Start some programs or do whatever you want inside the VM. 
+
+Afterward, debug the running VM using GDB. You can omit the vmlinux file in case you are doing a real analysis of an unknown system. However, if you want to verify that RandCompile functions correctly, you might want add the debugging symbols to the GDB session and add the ```nokaslr``` switch to the kernel command line (like shown above).
+
+```
+$> gdb -ex 'target remote :1234' kernels/base.vmlinux
+```
+
+For an efficient search for the ```swapper/0``` string in memory of QEMU, we refer to the gdb-pt-dump plugin for GDB which we provide as a submodule in our Git.
+
+```
+(gdb) source hyperlink-gdb/gdbpt/pt.py
+(gdb) pt -ss 'swapper/0'
+Found at 0xffff888002614f38 in   0xffff888002411000 : 0x929000 | W:1 X:0 S:1 UC:0 WB:1
+Found at 0xffffffff82614f38 in   0xffffffff82411000 : 0x929000 | W:1 X:0 S:1 UC:0 WB:1
+```
+
+In a second step, we use the memory address to recover the offset of the ```task_struct->tasks.next``` pointer and to list all running tasks from there on:
+
+```
+(gdb) hyperlink-ps 0xffffffff82614f38
+```
