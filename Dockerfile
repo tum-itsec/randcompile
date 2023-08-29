@@ -1,5 +1,5 @@
 FROM gcc:11.4-bullseye
-RUN apt-get update -y && apt-get install -y git build-essential libelf-dev flex bison bc libmpc-dev
+RUN apt-get update -y && apt-get install -y git build-essential libelf-dev flex bison bc libmpc-dev libfmt-dev
 
 # Needed for buildroot
 RUN apt-get install -y rsync cpio
@@ -15,7 +15,7 @@ RUN cp -r /home/randcompile/source /home/randcompile/source-unpatched
 WORKDIR /home/randcompile/source
 
 # Apply our patch
-RUN patch -p1 ../randfun.patch
+RUN patch -p1 < ../randfun.patch
 
 WORKDIR /home/randcompile/
 ENTRYPOINT ["/home/randcompile/build-kernel.sh"]
