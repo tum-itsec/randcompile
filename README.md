@@ -69,9 +69,12 @@ config_nobogus}
 
 After a sucessfull build you should find the following files in the ```kernels/``` folder:
 
-- ```base.{bzImage|vmlinux}```: An unpatched 5.15 kernel
+- ```base.{bzImage|vmlinux}```: An unpatched 5.15 kernel. The vmlinux ELF file contains debugging symbols (i.e. for closer inspection in GDB).
 - ```base_ftrace.{bzImage|vmlinux```: An unpatched 5.15 kernel with Ftrace enabled
 - ```forensic_hardening.{bzImage|vmlinux}```: A kernel without randomized arguments, no externalized printk format strings, but pointer encryption for the ```task_struct.tasks.{next|prev}``` pointers and string encryption of ```tasks_struct.comm```. This should defeat/confuse tools like Fossil (only the task listing!) and HyperLink/TrustZone Rootkit.
+- ```nobogus.{bzImage|vmlinux}```: Forensic_hardening + Parameter Order Randomization applied on all but blacklisted kernel functions.
+- ```bogusargs.{bzImage|vmlinux}```: nobogus + Additional bogus arguments are inserted in case a function has less then 6 arguments.
+- ```bogusmem.{bzImage|vmlinux}```: bogusargs + Bogus arguments are filled with artifical memory accesses.
 
 ## Analyzing Memory with our HyperLink GDB Plugin
 
