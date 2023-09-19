@@ -245,6 +245,6 @@ Guessed PID offset: -0x2d8
 
 ## Performance Evaluation
 
-To reproduce our performance evaluation, execute the ```./testproc.sh``` script (part of the ```buildroot-overlay``` folder and, therefore, also part of the created initrd) 10 times for a given test kernel. Afterward, you need to copy and paste the output of the ```./testproc.sh``` runs from QEMU into a text file and place it into a ```results``` folder. Our analysis script to generate the charts (```analyze_results.py```) will normalize the results by using the results file called ```base```.
+To reproduce our performance evaluation, execute the ```./testproc.sh``` script (part of the ```buildroot-overlay``` folder and, therefore, also part of the created initrd) 10 times for a given test kernel. Afterward, you need to copy and paste the output of the ```./testproc.sh``` runs from QEMU into a text file and place it inside the ```results``` folder. Our analysis script to generate the charts (```analyze_results.py```) will normalize the results by using the results file called ```base```.
 
 *Please Note:* Our measurements for *Signal handler installation* and *Protection fault* were within the general 1-3% overhead range and we, therefore, intentionally removed them to save space in the paper.
