@@ -106,34 +106,7 @@ In a second step, we use the memory address to recover the offset of the ```task
 (gdb) source hyperlink-gdb/hyperlink.py
 (gdb) hyperlink-ps 0xffffffff82614f38
 Looking for kernel pointers around 0xffff8880026149b8
--9b8 0xffff888002614000: ffff82bdf000007f -> <invalid addr>
--998 0xffff888002614020: ffff8260400001ff -> <invalid addr>
--8d8 0xffff8880026140e0: ffffffff826140e0 -> ffffffff826140e0 [circular len=0, comm const]
--8d0 0xffff8880026140e8: ffffffff826140e0 -> ffffffff826140e0 [circular len=0]
--8b8 0xffff888002614100: ffffffff822ba335 -> 54002f3d454d4f48
--8b0 0xffff888002614108: ffffffff822ba33c -> 6e696c3d4d524554
--798 0xffff888002614220: ffffffff822ba30f -> 622f0074696e692f
--790 0xffff888002614228: ffff88803f6ed68e -> 726c73616b6f6e
--688 0xffff888002614330: ffffffff822ba30f -> 622f0074696e692f
--670 0xffff888002614348: ffffffff8200f0a0 -> 0
--660 0xffff888002614358: ffffffff8264b040 -> 1
--4b8 0xffff888002614500: ffffffff822e0b74 -> 1007366746f6f72
--4a8 0xffff888002614510: ffffffff810008e0 -> 750001d3d7553d80
--490 0xffff888002614528: ffffffff811a9f50 -> bf8b4853fd894855
--478 0xffff888002614540: ffff8880030acab8 -> 0
--468 0xffff888002614550: ffffffff82614550 -> ffffffff82614550 [circular len=0, comm const]
--460 0xffff888002614558: ffffffff82614550 -> ffffffff82614550 [circular len=0]
--3f8 0xffff8880026145c0: ffff88800304a000 -> 1
--3e0 0xffff8880026145d8: ffffffffffffffff -> <invalid addr>
--368 0xffff888002614650: ffffffff8273a2c0 -> 2a
--2c8 0xffff8880026146f0: ffffffff82614580 -> 4000
---Type <RET> for more, q to quit, c to continue without paging--
--288 0xffff888002614730: ffffffff82614580 -> 4000
--280 0xffff888002614738: ffffffff8273a740 -> 0
--268 0xffff888002614750: ffffffff82614750 -> ffffffff82614750 [circular len=0, comm const]
--260 0xffff888002614758: ffffffff82614750 -> ffffffff82614750 [circular len=0]
--1e0 0xffff8880026147d8: ffffffff810dba40 -> 5441554156415741
--168 0xffff888002614850: ffffffff82614ad0 -> 1
+[...]
 -158 0xffff888002614860: ffffffff82614860 -> ffffffff82614860 [circular len=0, comm const]
 -150 0xffff888002614868: ffffffff82614860 -> ffffffff82614860 [circular len=0]
 -138 0xffff888002614880: ffffffffffffffff -> <invalid addr>
@@ -144,50 +117,7 @@ Looking for kernel pointers around 0xffff8880026149b8
 -0c8 0xffff8880026148f0: ffffffff826148f0 -> ffffffff826148f0 [circular len=0, comm const]
 -0c0 0xffff8880026148f8: ffffffff826148f0 -> ffffffff826148f0 [circular len=0]
 -0b8 0xffff888002614900: ffffffff82614900 -> ffffffff82614900 [circular len=0, comm const]
--0b0 0xffff888002614908: ffffffff82614900 -> ffffffff82614900 [circular len=0]
--090 0xffff888002614928: ffff8880030b0440 -> 0
--078 0xffff888002614940: ffffffff82614940 -> ffffffff82614940 [circular len=0, comm const]
--070 0xffff888002614948: ffffffff82614940 -> ffffffff82614940 [circular len=0]
--068 0xffff888002614950: ffffffff82614950 -> ffffffff82614950 [circular len=0, comm const]
--060 0xffff888002614958: ffffffff82614950 -> ffffffff82614950 [circular len=0]
---Type <RET> for more, q to quit, c to continue without paging--
--050 0xffff888002614968: ffffffff82616dd8 -> ffffffff82614968 [circular len=1]
--048 0xffff888002614970: ffffffff82616dd8 -> ffffffff82614968 [circular len=1]
--038 0xffff888002614980: ffffffff826169e0 -> 0
--018 0xffff8880026149a0: ffffffff82600000 -> 57ac6e9d
-0098 0xffff888002614a50: ffffffff82614a50 -> ffffffff82614a50 [circular len=0, comm const]
-00a0 0xffff888002614a58: ffffffff82614a50 -> ffffffff82614a50 [circular len=0]
-0160 0xffff888002614b18: ffffffff8106e400 -> e9fffffffcc0c748
-0190 0xffff888002614b48: ffffffff8264b900 -> 2d
-01a0 0xffff888002614b58: ffffffff82399640 -> ffffffff81091b90
-01a8 0xffff888002614b60: ffffffff826161c0 -> 100000000
-0218 0xffff888002614bd0: ffffffff82614580 -> 4000
-0270 0xffff888002614c28: ffffffff82614c28 -> ffffffff82614c28 [circular len=0, comm const]
-0278 0xffff888002614c30: ffffffff82614c28 -> ffffffff82614c28 [circular len=0]
-0398 0xffff888002614d50: ffff88803e4216c0 -> 0
-0428 0xffff888002614de0: ffffffff82d58780 -> ffffffff827320b0 [circular len=1]
-0438 0xffff888002614df0: ffffffff8264bb20 -> ffffffff8264b040
-0440 0xffff888002614df8: ffffffff8264bb20 -> ffffffff8264b040
-0518 0xffff888002614ed0: ffff8880030c83d0 -> ffff8880030c9350 [circular len=2]
-0520 0xffff888002614ed8: ffff8880030c9350 -> ffffffff82614ed0 [circular len=2]
-0548 0xffff888002614f00: ffffffff82731260 -> ffffffff82735f40 [circular len=2]
-0568 0xffff888002614f20: ffffffff82614f20 -> ffffffff82614f20 [circular len=0, comm const]
-0570 0xffff888002614f28: ffffffff82614f20 -> ffffffff82614f20 [circular len=0]
---Type <RET> for more, q to quit, c to continue without paging--
-0580 0xffff888002614f38: ffffffff82614f38 -> ffffffff82614f38 [circular len=0, comm const]
-0588 0xffff888002614f40: ffffffff82614f38 -> ffffffff82614f38 [circular len=0]
-0598 0xffff888002614f50: ffffffff82614f50 -> ffffffff82614f50 [circular len=0, comm const]
-05a0 0xffff888002614f58: ffffffff82614f50 -> ffffffff82614f50 [circular len=0]
-05b0 0xffff888002614f68: ffffffff8264b7c0 -> 1
-05c0 0xffff888002614f78: ffffffff82614f78 -> ffffffff82614f78 [circular len=0, comm const]
-0618 0xffff888002614fd0: ffffffff82614fd0 -> ffffffff82614fd0 [circular len=0, comm const]
-0640 0xffff888002614ff8: ffffffff8109e4f0 -> 415641ff89495741
-0648 0xffff888002615000: ffff88803e41dcc0 -> ffff88803e41dc80
-0658 0xffff888002615010: ffffffff82615010 -> ffffffff82615010 [circular len=0, comm const]
-0680 0xffff888002615038: ffffffff8109ed50 -> 5441554156415741
-0688 0xffff888002615040: ffff88803e41dcc0 -> ffff88803e41dc80
-0698 0xffff888002615050: ffffffff82614f78 -> ffffffff82614f78 [circular len=0]
-0720 0xffff8880026150d8: ffffffff82603e28 -> fffb9501
+[...]
 Guessed offset of task_struct->tasks.next: -0xe8
 Guessed PID offset: -0x2d8
 
@@ -208,31 +138,7 @@ Guessed PID offset: -0x2d8
 0xffff8880030931d0 PID: 12, Comm: rcu_sched
 0xffff888003094150 PID: 13, Comm: migration/0
 0xffff8880030950d0 PID: 14, Comm: cpuhp/0
-0xffff888003096050 PID: 15, Comm: kdevtmpfs
-0xffff888003096fd0 PID: 16, Comm: inet_frag_wq
-0xffff888003118350 PID: 17, Comm: kauditd
-0xffff8880031192d0 PID: 18, Comm: oom_reaper
-0xffff88800311a250 PID: 19, Comm: writeback
-0xffff88800311b1d0 PID: 20, Comm: kcompactd0
-0xffff8880032292d0 PID: 42, Comm: kblockd
-0xffff88800322a250 PID: 43, Comm: blkcg_punt_bio
-0xffff888003228350 PID: 44, Comm: kworker/0:1
-0xffff88800322b1d0 PID: 45, Comm: ata_sff
-0xffff88800322c150 PID: 46, Comm: md
---Type <RET> for more, q to quit, c to continue without paging--
-0xffff88800322d0d0 PID: 47, Comm: rpciod
-0xffff88800322e050 PID: 48, Comm: kworker/u3:0
-0xffff88800322efd0 PID: 49, Comm: xprtiod
-0xffff888003226fd0 PID: 50, Comm: cfg80211
-0xffff888003226050 PID: 51, Comm: kworker/u2:1
-0xffff8880032250d0 PID: 52, Comm: kswapd0
-0xffff888003224150 PID: 53, Comm: nfsiod
-0xffff8880032231d0 PID: 55, Comm: acpi_thermal_pm
-0xffff888003222250 PID: 56, Comm: kworker/u2:2
-0xffff8880032212d0 PID: 57, Comm: scsi_eh_0
-0xffff888003220350 PID: 58, Comm: scsi_tmf_0
-0xffff888003136fd0 PID: 59, Comm: scsi_eh_1
-0xffff888003136050 PID: 60, Comm: scsi_tmf_1
+[...]
 0xffff8880031350d0 PID: 61, Comm: kworker/u2:3
 0xffff888003134150 PID: 62, Comm: kworker/0:2
 0xffff8880031331d0 PID: 63, Comm: mld
@@ -242,6 +148,120 @@ Guessed PID offset: -0x2d8
 0xffff88803f85efd0 PID: 109, Comm: sh
 0xffffffff826148d0 PID: 0, Comm: swapper/0
 ```
+
+## Analyzing Memory with Katana
+
+First, build our docker image containing the Katana Forensic Framework:
+
+```
+$> cd katana-docker && docker build -t randcompile-katana .
+```
+
+In contrast to our reimplementation of HyperLink, Katana works on offline memory dumps that need to be provided as Core-Files in ELF format. You can create these dumps using the QEMU Monitor Mode command ```dump-guest-memory <filename>``` (we will use ```base_ftrace.core``` as filename here). Launch the VM you want to analyze using Katana and issue a dump-guest-memory command. In case, you are using the ```-nograpic``` command line switch (as done above), you can enter monitor mode using Ctrl-A C. You can leave QEMU nographic mode anytime using Ctrl-A X.
+
+#### Recover symbols: Adapted way (recommended, works with all kernels)
+
+*Please Note: Katana's kallsysms recovery mechanism currently only supports to analyze kernels that have the ftrace/kprobes feature enabled!*  To support all of our kernels above, we adapted the ```kallsyms_finder.py``` from the https://github.com/marin-m/vmlinux-to-elf project.
+
+Create an empty symtab file for the core file (this is not a problem, as all information of the symtab will likewise be contained in the kallsyms information) and call our adapted ```kallsyms_finder.py``` script afterward:
+
+```
+$> touch base_ftrace.core-symtab
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 kallsyms_finder.py /mnt/base_ftrace.core
+```
+
+#### Alternative way to recover symbols (traditional Katana way; should not be necessary)
+
+Let Katana recover all function starts for analysis in the memory dump:
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana ./search-any-symtab.sh /mnt/base_ftrace.core
+```
+
+Next, let Katana augment the symtab symbols with the symbols from the kallsyms mechanism:
+
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 emu_kallsyms_x64.py /mnt/base_ftrace.core
+```
+
+#### Actual Field Offset Recovery
+
+Finally, let Katana perfom the actual analysis and recover the field offsets of all structures in the Linux kernel. *Note: This will take some time. Do not get irritated by the "missing delay slot instruction" messages. They do not indicate a Bug on x86-64*:
+
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana evaluation/recover-offsets-from-dump.sh /mnt/base_ftrace.core db/fields.v5.15.5-def.txt db/structinfo.v5.15.5-def.json
+```
+
+This analysis process of Katana will place a ```<filename>-layout-processed``` file into the same directory as the core file being analyzed. It contains all offsets it could deduct from the text segment of the kernel in the respective memory dump. The results are not aggregated, so every *vote* for a field can be extracted of the field. For example, *votes* for fields inside the ```task_struct``` can be filtered out of the file using the ```jq``` utility:
+
+```
+$> jq '.reconstructed.task_struct.[] | select(.[0]=="comm")' < base_ftrace.core-layout-processed
+``` 
+
+Afterward, we can execute the different information extraction plugins of Katana. We used for our research the following four plugins:
+
+*List kernel modules (the list is empty as the test kernel does not load any modules):*
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 list_modules.py -s db/structinfo.v5.15.5-def.json /mnt/base_ftrace.core 
+
+Extracted offsets:
+    module->list.next: 0x88
+    module->name:      0x260
+
+Module struct @ 0xffffffff95550f58 (
+```
+
+*List running processes (Task Listing):*
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 list_procs.py -s db/structinfo.v5.15.5-def.json /mnt/base_ftrace.core
+
+Extracted offsets:
+    task_struct->tasks.next: 0x798
+    task_struct->state:      0x18
+    task_struct->pid:        0x678
+    task_struct->comm:       0x878
+    task_struct->mm:         0x8b8
+    mm_struct->pgd:          0x230
+
+Attributes found, skipping for now
+
+    task_struct->cred:       0xa08
+    cred->uid                0x08
+
+0xffffffff95414940
+PID: 0 (swapper/0       ) State: 0x0 MM 0x0 UID 0x00
+Task struct @ 0xffffffff95414940 CR3 (0x0000000000000000)
+0xffff93b601218000
+PID: 1 (init            ) State: 0x1 MM 0xffff93b601230440 UID 0x00
+Task struct @ 0xffff93b601218000 CR3 (0xffff93b60104c000          0x104c000)
+0xffff93b601218fc0
+PID: 2 (kthreadd        ) State: 0x1 MM 0x0 UID 0x00
+Task struct @ 0xffff93b601218fc0 CR3 (0x0000000000000000)
+0xffff93b601219f80
+PID: 3 (rcu_gp          ) State: 0x402 MM 0x0 UID 0x00
+Task struct @ 0xffff93b601219f80 CR3 (0x0000000000000000)
+0xffff93b60121af40
+PID: 4 (rcu_par_gp      ) State: 0x402 MM 0x0 UID 0x00
+Task struct @ 0xffff93b60121af40 CR3 (0x0000000000000000)
+0xffff93b60121bf00
+PID: 5 (netns           ) State: 0x402 MM 0x0 UID 0x00
+Task struct @ 0xffff93b60121bf00 CR3 (0x0000000000000000)
+0xffff93b60121cec0
+PID: 6 (kworker/0:0     ) State: 0x402 MM 0x0 UID 0x00
+Task struct @ 0xffff93b60121cec0 CR3 (0x0000000000000000)
+0xffff93b60121de80
+[...]
+```
+
+*List opened files of running processes:*
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 list_files.py -s db/structinfo.v5.15.5-def.json /mnt/base_ftrace.core
+```
+
+*Extract the Dmesg Log:*
+```
+$> docker run --rm -v $(pwd):/mnt -it randcompile-katana python3 extract_dmesg.py -s db/structinfo.v5.15.5-def.json /mnt/base_ftrace.core
+```
+
 
 ## Performance Evaluation
 

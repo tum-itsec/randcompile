@@ -1,0 +1,13 @@
+diff --git a/list_procs.py b/list_procs.py
+index 7a09d76..04b2bc4 100755
+--- a/list_procs.py
++++ b/list_procs.py
+@@ -46,7 +46,7 @@ if __name__ == "__main__":
+     next_ptr_off = require(layout['list_head']['next'], expr='list_head->next')
+     ptr_off = tasks_off + next_ptr_off
+ 
+-    state_off = require(layout['task_struct']['state'], expr='task_struct->state')
++    state_off = require(layout['task_struct']['__state'], expr='task_struct->__state') # In Linux kernel 5.15 state is renamed to __state
+     pid_off = require(layout['task_struct']['pid'], expr='task_struct->pid')
+     comm_off = require(layout['task_struct']['comm'], expr='task_struct->comm')
+     mm_off = require(layout['task_struct']['mm'], layout['task_struct']['active_mm'], expr='task_struct->mm or task_struct->active_mm')
